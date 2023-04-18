@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Menu</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/LogoSoa.png" type="image/png">
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!--AOS-animation-->
+    <link rel="stylesheet" th:href="@{https://unpkg.com/aos@next/dist/aos.css}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+</head>
+<body>
+
+<!-- Start Main Top -->
+<div class="main-top" th:fragment="main-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="our-link">
+                    <ul>
+                        <li ><a href="#" style="text-transform: lowercase !important;font-weight: normal;"> Tel : +261344250907</a></li>
+                        <li ><a href="#" style="text-transform: lowercase !important; font-weight: normal;"><i class="fas fa-location-arrow"></i> Email: soacosmetique@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main Top -->
+
+<!-- Start Main Top -->
+<header class="main-header py-0" th:fragment="main-header">
+
+    <style>
+        .logoSoa {
+            width: 70px;
+            height: 70px;
+        }
+    </style>
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav py-0">
+        <div class="container">
+            <!--Logo SOA-->
+            <img th:src="@{/images/LogoSoa.png}" class="logoSoa">
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <!--<a class="navbar-brand" href="index.html"><img src="images/logo1.png" class="logo" width="180" height="150" alt=""></a> -->
+            </div>
+            <!-- End Header Navigation -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse d-flex flex-row justify-content-center" id="navbar-menu">
+                <ul class="nav navbar-nav ml-3" data-in="fadeInDown" data-out="fadeOutUp">
+                    <li class="nav-item"><a style="text-transform: capitalize !important;font-weight: normal !important;" class="nav-link"th:href="@{/}">Acceuil</a></li>
+                    <li class="nav-item active"><a style="text-transform: capitalize !important;font-weight: normal !important;" class="nav-link" th:href="@{/home}">Menu</a></li>
+
+                    <li class="dropdown">
+                        <a style="text-transform: capitalize !important;font-weight: normal !important;" href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Boutique</a>
+                        <ul class="dropdown-menu" style="background: white;">
+                            <li><a th:href="@{/products}">Détail Boutique</a></li>
+                            <li><a href="#">Détail Produit</a></li>
+                            <li><a href="#">Panier</a></li>
+                            <li><a href="#">Achat</a></li>
+                            <li><a th:href="@{/account}">Mon Compte</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a style="text-transform: capitalize !important;font-weight: normal !important;" class="nav-link" href="#">Contactez-nous</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li class="side-menu">
+                        <a th:href="@{/cart}">
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="badge" th:text = "${session.totalItems == null} ? '0' : ${session.totalItems}"></span>
+                            <p>Mon panier</p>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="login-box">
+                            <select id="" class="selectpicker show-tick form-control" data-placeholder="Se Connecte" onchange="location = this.value;">
+                                <option th:text="${session.username != null} ? ${session.username} : 'S\'authentifier'"></option>
+                                <option th:if = "${session.username == null}" value="http://localhost:8095/shop/login">Se Connecté</option>
+                                <option th:if = "${session.username != null}" value="http://localhost:8095/shop/logout">Se Déconnecté</option>
+                                <option value="http://localhost:8095/shop/register" >S'inscrire</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+        </div>
+        <!-- Start Side Menu -->
+        <div class="side">
+            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+            <li class="cart-box">
+                <ul class="cart-list">
+                    <li>
+                        <a href="#" class="photo"><img th:src="@{/images/Lobster 02 - Lobster rolls.jpg}" class="cart-thumb"
+                                                       alt=""/></a>
+                        <h6><a href="#">Lobster rolls </a></h6>
+                        <p>1 - <span class="price">$80.00</span></p>
+                    </li>
+                    <li>
+                        <a href="#" class="photo"><img th:src="@{/images/Octopus 05 - Octopus with Black Bean Pear Sauce.jpg}"
+                                                       class="cart-thumb" alt=""/></a>
+                        <h6><a href="#">Octopus with Black Bean</a></h6>
+                        <p>1 - <span class="price">$60.00</span></p>
+                    </li>
+                    <li>
+                        <a href="#" class="photo"><img th:src="@{/images/Crab 02 - Crab Toast.jpg}" class="cart-thumb" alt=""/></a>
+                        <h6><a href="#">Crab Toast</a></h6>
+                        <p>1 - <span class="price">$40.00</span></p>
+                    </li>
+                    <li class="total">
+                        <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VOIR CART</a>
+                        <span class="float-right"><strong>Total</strong>: $180.00</span>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <!-- End Side Menu -->
+    </nav>
+    <!-- End Navigation -->
+</header>
+<!--Navigation Product page-->
+<div class="product-item-filter row" th:fragment="nav-product">
+    <div class="col-12 col-sm-8 text-center text-sm-left">
+        <div class="toolbar-sorter-right">
+            <span>Les produits Soa </span>
+        </div>
+        <p>Toutes les résultats</p>
+    </div>
+    <div class="col-12 col-sm-4 text-center text-sm-right">
+        <ul class="nav nav-tabs ml-auto">
+            <li>
+                <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i
+                        class="fa fa-th"></i> </a>
+            </li>
+            <li>
+                <a class="nav-link" href="#list-view" data-toggle="tab"> <i
+                        class="fa fa-list-ul"></i> </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Start Top Search -->
+<div class="top-search" th:fragment="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+</div>
+<!-- End Top Search -->
+
+<!-- Start Slider -->
+<div class="all-title-box" th:fragment="slider">
+
+</div>
+<!-- End Slider -->
+
+
+
+
+<!-- Start Footer  -->
+<footer th:fragment="footer">
+    <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up">
+                    <div class="footer-top-box">
+                        <h3>Heure d'ouverture</h3>
+                        <ul class="list-time">
+                            <li>Lundi - Samedi: 08.00 à 19.00</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-down">
+                    <div class="footer-top-box">
+                        <h3>Contactez-Nous</h3>
+                        <ul class="list-time">
+                            <li><i class="fas fa-phone-square"></i> Téléphone: +261344250907</li>
+                            <li><i class="fas fa-envelope"></i> Email: soacosmetique@gmail.com</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Adresse: Lot 12 Ter Hopitaly, Itaosy, Antananarivo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up">
+                    <div class="footer-top-box">
+                        <h3>Nos Réseaux Sociaux</h3>
+                        <p>N'hésitez pas à visiter nos pages.</p>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ALL JS FILES -->
+<div th:fragment="script">
+    <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <!-- ALL PLUGINS -->
+    <script th:src="@{/js/jquery.superslides.min.js}"></script>
+    <script th:src="@{/js/bootstrap-select.js}"></script>
+    <script th:src="@{/js/inewsticker.js}"></script>
+    <script th:src="@{/js/bootsnav.js.}"></script>
+    <script th:src="@{/js/images-loded.min.js}"></script>
+    <script th:src="@{/js/isotope.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/baguetteBox.min.js}"></script>
+    <script th:src="@{/js/form-validator.min.js}"></script>
+    <script th:src="@{/js/contact-form-script.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
+    <script th:src="@{https://unpkg.com/aos@next/dist/aos.js}"></script>
+    <script>
+        AOS.init();
+    </script>
+</div>
+</body>
+</html>

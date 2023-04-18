@@ -1,0 +1,208 @@
+    <!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head th:replace="fragments::head">
+
+</head>
+
+<body>
+<!-- Start Main Top -->
+<div th:replace="fragments::main-top">
+</div>
+<!-- End Main Top -->
+
+<!-- Start Main Top -->
+<header th:replace="fragments::main-header">
+</header>
+<!-- End Main Top -->
+
+<!-- Start Top Search -->
+<div th:replace="fragments::top-search">
+</div>
+<!-- End Top Search -->
+
+<!-- Start Slider -->
+<!--<div th:replace="fragments::slider">-->
+<!--</div>-->
+<!-- End Slider -->
+
+
+<!-- Start About Page  -->
+<div class="about-box-main">
+    <div class="container">
+        <div class="row flex-lg-row" style="height: 500px;">
+            <div class="col-lg-7" data-aos="fade-right"
+                 data-aos-offset="300"
+                 data-aos-easing="ease-in-sine">
+                <div class="d-flex flex-column justify-content-center align-items-start" style="height: 100%;">
+                    <h1 class="noo-sh-title-top" style="color: #dc8787; font-size: 35px;">LES MEILLEURS PRODUITS NATURELS POUR LE SOIN DE LA PEAU</h1>
+                    <p>Avec 100 % du meilleur résultat et aucune mauvaise conséquence</p>
+                    <p>Vente de produits cosmétiques naturels - Vita Malagasy. Les cosmétiques certifiés bio sont composés en très grande partie : D'ingrédients naturels:
+                        extraits de plantes, huiles végétales et huiles essentielles, D'ingrédients bio, issus de l'agriculture biologique. </p>
+                    <div>
+                        <button class="btn p-2 bout" style="color: white; background: #dc8787; width: 170px;" href="#">Voir tous les produits</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5" data-aos="fade-left"
+                 data-aos-anchor="#example-anchor"
+                 data-aos-offset="500"
+                 data-aos-duration="500">
+                <div class="banner-frame"><img class="img-fluid" src="images/cosmetic1.png" style="height: 500px;" alt=""/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center py-4" data-aos="fade-right"
+                 data-aos-offset="300"
+                 data-aos-easing="ease-in-sine"><h1>Nos Collections</h1></div>
+            <div class="col-12">
+                <!-- Start Feed  -->
+<!--                <div th:replace="fragments::instagram-box">-->
+<!--                </div>-->
+                <!-- End Feed  -->
+
+                <!--all product-->
+                <div class="container">
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-12">-->
+<!--                            <div class="special-menu text-center">-->
+<!--                                <div class="button-group filter-button-group">-->
+<!--                                    <button class="btn active" data-filter="*" style="color: white; background: black; width: 170px;">Tous</button>-->
+<!--                                    <button data-filter=".best-seller" class="btn bout" style="color: white; background: #dc8787; max-width: 570px;">Produits Favories</button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="row special-list">
+
+                        <div class="col-lg-3 col-md-6 special-grid" th:each="product : ${products}">
+                            <div class="products-single fix">
+                                <div class="box-img-hover">
+                                    <img th:src="@{'data:image/jpeg;base64,' + ${product.image}}" style="height: 300px;" class="img-fluid" alt="Image">
+                                    <div class="mask-icon">
+                                        <ul>
+                                            <li><a th:href="@{/find-product/{id}(id = ${product.id})}" data-toggle="tooltip" data-placement="right"
+                                                   title="View"><i class="fas fa-eye"></i></a></li>
+                                        </ul>
+                                        <a class="cart" href="#"><i class="fas fa-plus pls"></i></a>
+                                    </div>
+                                </div>
+                                <div class="why-text">
+                                    <h4 th:text="${product.name}">Almond-Topped Fish</h4>
+                                    <h5 th:text="'$' + ${product.costPrice}"> $36.00</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center py-4" data-aos="fade-left"
+                 data-aos-anchor="#example-anchor"
+                 data-aos-offset="500"
+                 data-aos-duration="500">
+                <h1>Pourquoi Utilisé les Produits <span style="color: #B0AEEF;">Soa</span> ?</h1>
+            </div>
+        </div>
+        <div class="mb-5">
+            <div class="row my-5">
+                <div class="col-6" data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom">
+                    <img src="images/skin.png" alt="">
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+                     data-aos-anchor-placement="center-bottom">
+                    <h2 class="py-2">Respectueux de la peau</h2>
+                    <p>Les ingrédients utilisés dans les soins de la peau biologiques répondent aux mêmes normes.
+                        En tant qu'aliment biologique. Ceux-ci n'incluent pas de produits chimiques agressifs, de pesticides ou d'engrais.</p>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-6 d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+                     data-aos-anchor-placement="top-bottom">
+                    <h2 class="py-2">Plus sain pour vous</h2>
+                    <p>Les produits cosmétiques contiennent souvent des produits chimiques perturbateurs endocriniens, notamment des phtalates, du laurylsulfate de sodium et des parabènes.</p>
+                </div>
+                <div class="col-6" data-aos="fade-up"
+                     data-aos-anchor-placement="center-bottom">
+                    <img src="images/skin2.png" alt="">
+                </div>
+            </div>
+            <div class="row my-2 d-flex justify-content-center" data-aos="zoom-in">
+                <button class="btn" style="color: white; background: #D07272;">Plus d'avantages</button>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12 text-center py-3" data-aos="fade-left"
+                 data-aos-anchor="#example-anchor"
+                 data-aos-offset="500"
+                 data-aos-duration="500">
+                <h1>À propos de <span style="color: #B0AEEF;">Soa</span> Cosmétique</h1>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-6" data-aos="fade-up"
+                     data-aos-duration="3000">
+                    <img src="images/LogoSoa.png" alt="">
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-center align-items-center" data-aos="fade-down"
+                     data-aos-easing="linear"
+                     data-aos-duration="1500">
+                    <p class="mb-2">Les ingrédients utilisés dans les soins de la peau biologiques répondent aux mêmes normes.
+                        En tant qu'aliment biologique. Ceux-ci n'incluent pas de produits chimiques agressifs, de pesticides ou d'engrais.</p>
+                    <p class="mb-2">Les ingrédients utilisés dans les soins de la peau biologiques répondent aux mêmes normes.
+                        En tant qu'aliment biologique. Ceux-ci n'incluent pas de produits chimiques agressifs, de pesticides ou d'engrais.</p>
+                    <p class="mb-2">Les ingrédients utilisés dans les soins de la peau biologiques répondent aux mêmes normes.
+                        En tant qu'aliment biologique. Ceux-ci n'incluent pas de produits chimiques agressifs, de pesticides ou d'engrais.</p>
+                </div>
+            </div>
+        </div>
+
+<!--        <div class="row my-5">-->
+<!--            <div class="col-sm-6 col-lg-4">-->
+<!--                <div class="service-block-inner">-->
+<!--                    <h3>Nous sommes dignes de confiance</h3>-->
+<!--                    <p>Lorem Ocean Prime Seafoods deals only with high-end processors and reliable importers.-->
+<!--                        We handle quality products that we would serve to our friends and family. </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-lg-4">-->
+<!--                <div class="service-block-inner">-->
+<!--                    <h3>Nous sommes professionnels</h3>-->
+<!--                    <p>Ici, les clients sont invités à une aventure gastronomique. Nous allons créer une grande expérience pour vous-->
+<!--                        toi.-->
+<!--                        Nous livrons plus que de la nourriture incroyable : nous créons des expériences remarquables.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6 col-lg-4">-->
+<!--                <div class="service-block-inner">-->
+<!--                    <h3>Nous sommes des experts</h3>-->
+<!--                    <p>Nous avons passé de nombreuses années dans le secteur des produits de la mer, nous savons où trouver les meilleurs produits.-->
+<!--                        Notre menu est à la fois classique et moderne, avec des plats plus légers et de délicieuses présentations de fruits de mer.-->
+<!--                        comme le crabe, les crevettes, le homard,... </p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</div>
+
+
+
+
+<!-- Start Footer  -->
+<footer th:replace="fragments::footer">
+</footer>
+
+
+<!-- ALL JS FILES -->
+<div th:replace="fragments::script"></div>
+</body>
+
+</html>

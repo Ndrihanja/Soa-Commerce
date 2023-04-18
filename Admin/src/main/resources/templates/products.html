@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments::head">
+</head>
+<body>
+<!-- ======= Header ======= -->
+<header th:replace = "fragments::header"></header>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside th:replace = "fragments::sidebar"></aside>
+<!-- End Sidebar-->
+
+<main id="main" class="main">
+
+  <div th:replace = "fragments::titlepage"></div>
+  <!-- End Page Title -->
+
+  <section class="section dashboard">
+    <div class="row">
+      <h1>Gestion des Produits</h1>
+      <div class="mb-4">
+        <a th:href="@{/add-product}" class="btn btn-primary">Ajouter un Produit</a>
+      </div>
+      <div th:if="${success}" class="text-center alert alert-success">
+        <p th:text="${success}"></p>
+      </div>
+      <div th:if="${failed}" class="text-center alert alert-danger">
+        <p th:text="${failed}"></p>
+      </div>
+
+      <!-- Recent Sales -->
+      <div class="col-12">
+        <div class="card recent-sales overflow-auto">
+
+          <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+
+              <li><a class="dropdown-item" href="#">Today</a></li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+
+            <div th:if="${size == 0}">
+              <p>Pas de Produits</p>
+            </div>
+            <table class="table table-borderless datatable" th:if="${size > 0}">
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Déscription</th>
+                <th scope="col">Categorie</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Image</th>
+                <th scope="col">Modification</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr th:each="product : ${products}">
+                  <th scope="row" th:text="${product.id}"></th>
+                  <td th:text="${product.name}"></td>
+                  <td th:text="${product.description}"></td>
+                  <td th:text="${product.category.name}"></td>
+                  <td th:text="${product.costPrice}"></td>
+                  <td th:text="${product.currentQuantity}"></td>
+                  <td><img src="" style="height: 40px; width: 40px;" th:src="*{'data:image/jpeg;base64, ' + {product.image}}"></td>
+                  <td><a th:href="@{/update-product/{id} (id= ${product.id})}" class="btn btn-primary">Modifier</a></td>
+                  <td>
+                    <a th:if="${product.activated == false}" th:href="@{/enabled-product/{id} (id = ${product.id})}" class="btn btn-warning">Enable</a>
+                    <a th:if="${product.activated == true}" th:href="@{/delete-product/{id} (id = ${product.id})}" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+      </div>
+      <!-- End Recent Sales -->
+    </div>
+  </section>
+
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer th:replace="fragments::footer"></footer>
+<!-- End Footer -->
+
+<!-- script -->
+<div th:replace = "fragments::script"></div>
+</body>
+</html>

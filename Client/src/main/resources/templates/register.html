@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head th:replace="fragments :: head">
+
+</head>
+
+<body>
+<!-- Start Main Top -->
+<div th:replace="fragments::main-top">
+</div>
+<!-- End Main Top -->
+
+<!-- Start Main Top -->
+<header th:replace="fragments::main-header">
+</header>
+<!-- End Main Top -->
+
+<!-- Start Top Search -->
+<div th:replace="fragments::top-search">
+</div>
+<!-- End Top Search -->
+
+
+<section id="register-form" class="mt-4">
+    <div class="noi-dung">
+        <div class="form" style="box-shadow: 5px 4px 15px -8px rgba(0,0,0,0.96); padding: 0.5rem 1rem;">
+            <h2>Inscription</h2>
+            <div th:if = "${error}" class="text-center alert alert-danger">
+                <p th:text="${error}"></p>
+            </div>
+            <div th:if = "${username}" class="text-center alert-warning">
+                <p th:text="${username}"></p>
+            </div>
+            <div th:if = "${password}" class="text-center alert-warning">
+                <p th:text="${password}"></p>
+            </div>
+            <div th:if = "${success}" class="text-center alert-success">
+                <p th:text="${success}"></p>
+            </div>
+            <form th:action="@{/do-register}" method="post" th:object="${customerDto}">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-form">
+                            <!-- <span>User name</span> -->
+                            <input type="text" th:field = "*{firstName}" placeholder="Entrez votre nom..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}"
+                             th:errors = "*{firstName}"
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-form">
+                            <!-- <span>User name</span> -->
+                            <input type="text" th:field = "*{lastName}" placeholder="Entrez votre prénom..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}"
+                             th:errors = "*{lastName}"
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-form">
+                            <!-- <span>Pays</span> -->
+                            <input type="text" th:field = "*{country}" placeholder="Entrez votre pays..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('country')}"
+                             th:errors = "*{country}"
+                        ></div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-form">
+                            <!-- <span>Adress</span> -->
+                            <input type="text" th:field = "*{address}" placeholder="Entrez votre adresse..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('address')}"
+                             th:errors = "*{address}"
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-form">
+                            <!-- <span>City</span> -->
+                            <input type="text" th:field = "*{city}" placeholder="Entrez votre ville..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('city')}"
+                             th:errors = "*{city}"
+                        ></div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-form">
+                            <!-- <span>Phone</span> -->
+                            <input type="text" th:field = "*{phoneNumber}" placeholder="Entrez votre numero de phone..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('phoneNumber')}"
+                             th:errors = "*{phoneNumber}"
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-form">
+                            <!-- <span>User name</span> -->
+                            <input type="email" th:field = "*{username}" placeholder="Entrez votre email..." name="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-form">
+                            <!-- <span>Password</span> -->
+                            <input type="password" th:field = "*{password}" placeholder="Entrez votre mot de passe..." name="">
+                        </div>
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}"
+                             th:errors = "*{password}"
+                        ></div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-form">
+                            <!-- <span>Password</span> -->
+                            <input type="password" th:field = "*{repeatPassword}" placeholder="Confirmez votre mot de passe..." name="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-form">
+                    <p>Vous avez dejà un compte ? <a th:href="@{/login}"> S'authentifier </a></p>
+                </div>
+
+                <div class="input-form">
+                    <input type="submit" value="S'enregistrer" style="width: 250px; height: 100%; background: #007bff; border-radius: 3px; text-align: center;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+<!-- ALL JS FILES -->
+<div th:replace="fragments::script"></div>
+</body>
+
+</html>
